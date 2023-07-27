@@ -1,11 +1,10 @@
 #Main page that houses while loop to run game.
 
-#import sys to allow command line arguments
-import sys
-#import pygame to support game objects
 import pygame
 from settings import Settings
 from ship import Ship
+import game_functions as gf
+from alien import Alien
 
 def run_game():
     #Stat the game and create the screen objeject
@@ -16,19 +15,18 @@ def run_game():
     pygame.display.set_caption("Space Invaders")
     
     #Crate a ship
-    ship = Ship(screen)
+    ship = Ship(ai_settings, screen)
+    alien = Alien(screen)
     
     #Begin the main game loop
     while True:
         
-        #Keep track of keyboard events
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                sys.exit()
-        
+        gf.check_events(ship)
+        ship.update()
+        gf.update_screen(ai_settings, screen, ship, alien)
+       
+
         #update the screen
-        screen.fill(ai_settings.bg_colour)
-        ship.blitme()
-        pygame.display.flip()
+        
 
 run_game()

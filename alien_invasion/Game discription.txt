@@ -1,0 +1,22 @@
+Space invaders is a game where the player controls a space ship at the bottom of the screen. They can move this ship left and right as well as fire lazers via input through the keyboard. At the start of the game, the screen is filled with a fleet of aliens that move across the screen and down. Each time they hit the side of the screen, the aliens move down 1 line. Goal of the game is for the player to shoot and destory all aliens. Once the screen is cleared of aliens, a new fleet appears that moves a little faster then the previous. The aliens also shoot lazers down at random and if they hit the player or they reach the bottom of the screen, the player looses a life. If all 3 lives are lost, the game ends. Additionally, apply score for each wave to and keep highscore.
+
+Day 1
+     -     Created a 1200 x 800 Screen
+	- Created the main while loop
+		○ Checks and Responds to user input
+	- Created the settings Class to house all the settings needed for the game
+		○ Currently screen height
+		○ Size
+		○ Background colour
+	- Created the spaceship class
+		○ Sets the image of the class
+		○ Set the rectangle hitbox / surface of the object
+		○ Set the location of the rect to start at the bottom middle
+		○ Refresh current position 
+
+Day 2
+	- Simplified the while loop with Game_functions
+	- Created Alien Class and added into game_function
+	- Created movement flags, Allow ship to move left and right continuously through Keyup and KeyDown events. 
+	- Adjusted the ship speed
+        - Set up boarders for the screen so ship does not vanish
