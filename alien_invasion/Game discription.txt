@@ -20,3 +20,14 @@ Day 2
 	- Created movement flags, Allow ship to move left and right continuously through Keyup and KeyDown events. 
 	- Adjusted the ship speed
         - Set up boarders for the screen so ship does not vanish
+
+Day 4
+	- Limited amount of bullets to 4
+	- Created Update_bullet function to simplify space_invaders.py
+	- Created fire_bullets function to simplify press_down block
+	- Added quit fuction by using the letter quit
+	- Began working on alien class again. Need to fill the screen with Aliens as well as set up hitboxes
+	- Created for loop to add in alliens
+	- Space between each alien is 1 Alien, thus calculated the number of aliens by deviding the total screen by 2 * alien width
+	- Reduced size of aliens by 50% to allow for more aliens on screen. Size beteeen them might be too much... Perhaps half an #
+	  alien would be more practical
