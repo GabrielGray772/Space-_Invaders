@@ -31,3 +31,12 @@ Day 4
 	- Space between each alien is 1 Alien, thus calculated the number of aliens by deviding the total screen by 2 * alien width
 	- Reduced size of aliens by 50% to allow for more aliens on screen. Size beteeen them might be too much... Perhaps half an #
 	  alien would be more practical
+
+Day 5
+	- Simplified Generate fleet function
+	- Created row functions to generate the fleet of aliens
+	- Nexted For loop to Create them - Major impact on frame rectangle
+	- Make the fleet move to the right 
+	- Check if it hits the edge
+	- Drop the fleet down and Reverse the fleet direction if edge is hit
+

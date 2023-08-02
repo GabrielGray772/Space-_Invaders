@@ -37,6 +37,11 @@ def update_bullets(bullets):
         if bullet.rect.bottom <= 0:
             bullets.remove(bullet)
 
+def update_aliens(ai_settings, aliens):
+    # Update the postion of the alien fleet
+    check_fleet_edges(ai_settings,aliens)
+    aliens.update()
+
 def fire_bullets(ai_settings, screen, ship, bullets):
     # Create a new bullet and add it to the bullets group.
     if len(bullets) < ai_settings.bullets_allowed:
@@ -68,15 +73,28 @@ def create_fleet(ai_settings, screen, ship, aliens):
     # Calculate and create a number of alien in a row
     # Spaceing between aliens are 1 alien width
     alien = Alien(ai_settings, screen)
-    #alien_width = alien.rect.width
     number_aliens_x = get_number_aliens_x(ai_settings, alien.rect.width)
     number_rows = get_number_rows(ai_settings, ship.rect.height,
                                   alien.rect.height)
     
-    #Create the Fleet of aliens
+    # Create the Fleet of aliens
     for row_number in range(number_rows): 
         for alien_number in range(number_aliens_x):
             create_alien(ai_settings, screen, aliens, alien_number, row_number)
+            
+def check_fleet_edges(ai_settings, aliens):
+    # Check if fleet hits edge then adjusts accordingly
+    for alien in aliens.sprites():
+        if alien.check_edge():
+            change_fleet_direction(ai_settings, aliens)
+            break
+        
+def change_fleet_direction(ai_settings, aliens):
+    # Drop the fleet and change direction
+    for alien in aliens.sprites():
+        alien.rect.y += ai_settings.fleet_drop_speed
+    ai_settings.fleet_direction *= -1
+    
 
 #Udate images on screen
 def update_screen(ai_settings, screen, ship, bullets, aliens):
