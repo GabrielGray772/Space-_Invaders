@@ -42,21 +42,32 @@ def fire_bullets(ai_settings, screen, ship, bullets):
     if len(bullets) < ai_settings.bullets_allowed:
         new_bullet = Bullet(ai_settings, screen, ship)
         bullets.add(new_bullet)
-        
-def create_fleet(ai_settings, screen, aliens):
-    # Create an alien and calucalte number of aliens in the row
-    # Spaceing between aliens are 1 alien width
-    alien = Alien(ai_settings, screen)
-    alien_width = alien.rect.width
+
+def get_number_aliens_x(ai_settings, alien_width):
+    # Determine the number of aliens in a row
     availible_space_x = ai_settings.screen_width - 2 * alien_width
     number_aliens_x = int(availible_space_x / (2 * alien_width))
-    
+    return number_aliens_x
+
+def create_alien(ai_settings, screen, aliens, alien_number):
+    #Create aline and place in row
+    alien = Alien(ai_settings, screen)
+    alien_width = alien.rect.width
+    alien.x = alien_width + 2 * alien_width * alien_number
+    alien.rect.x = alien.x
+    aliens.add(alien)
+
+        
+def create_fleet(ai_settings, screen, aliens):
+    # Calculate and create a number of alien in a row
+    # Spaceing between aliens are 1 alien width
+    alien = Alien(ai_settings, screen)
+    #alien_width = alien.rect.width
+    number_aliens_x = get_number_aliens_x(ai_settings, alien.rect.width)
+     
     for alien_number in range(number_aliens_x):
         # Create an alien and place it in the row.
-        alien = Alien(ai_settings, screen)
-        alien.x = alien_width + 2 * alien_width * alien_number
-        alien.rect.x = alien.x
-        aliens.add(alien)
+        create_alien(ai_settings, screen, aliens, alien_number)
 
 #Udate images on screen
 def update_screen(ai_settings, screen, ship, bullets, aliens):
