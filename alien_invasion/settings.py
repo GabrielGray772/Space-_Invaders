@@ -7,7 +7,7 @@ class Settings():
         self.bg_colour = (230,230,230) #off white 
         self.ship_speed_factor = 1.5
         # Bullet settings
-        self.bullet_speed_factor = 1
+        self.bullet_speed_factor = 3
         self.bullet_width = 3
         self.bullet_height = 15
         self.bullet_colour = 60, 60, 60 #Dark Gray

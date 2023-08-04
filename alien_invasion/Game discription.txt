@@ -40,3 +40,7 @@ Day 5
 	- Check if it hits the edge
 	- Drop the fleet down and Reverse the fleet direction if edge is hit
 
+Day 6 
+	- Improved Update_bullet function to account for collisioin with aliens
+	- Added If statement to Update_bullet to refresh the fleet if aliens == 0
+	
