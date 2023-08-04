@@ -30,13 +30,16 @@ def check_events(ai_settings, screen, ship, bullets):
             check_keyup_events(event, ship)
               
 #update postion of bullets and deletes off screen bullets
-def update_bullets(bullets):
+def update_bullets(aliens, bullets):
     bullets.update()
     #Deletes off screen bullets
     for bullet in bullets.copy():
         if bullet.rect.bottom <= 0:
             bullets.remove(bullet)
-
+    # Check if bullets hits aliens
+    # if yes, delete bullet and alien
+    collisions = pygame.sprite.groupcollide(bullets, aliens, True, True)
+    
 def update_aliens(ai_settings, aliens):
     # Update the postion of the alien fleet
     check_fleet_edges(ai_settings,aliens)
