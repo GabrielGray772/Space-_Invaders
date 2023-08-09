@@ -6,7 +6,7 @@ from settings import Settings
 from ship import Ship
 import game_functions as gf
 
-
+__version__ = "1" 
 
 def run_game():
     #Stat the game and create the screen objeject
@@ -35,4 +35,5 @@ def run_game():
         gf.update_screen(ai_settings, screen, ship, bullets, aliens)
         
 
-run_game()
+if __name__ == "__main__":
+    run_game()
